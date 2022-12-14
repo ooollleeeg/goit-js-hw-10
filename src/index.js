@@ -26,18 +26,18 @@ function getFromInput(event) {
 
 function onSuccesInput(responseData) {
   if (responseData.length > 10) {
-    Notiflix.Notify.failure(
+    Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.'
     );
     return;
-  } else if (responseData.length >= 2 && responseData.length >= 10) {
+  } else if (responseData.length >= 2 && responseData.length <= 10) {
     return listMarkup(responseData);
   } else if (responseData.length === 1) {
     return cardMarkup(responseData);
   }
 }
 function onErrorInput() {
-  Notiflix.Notify.info('Oops, there is no country with that name');
+  Notiflix.Notify.failure(data.message);
 }
 
 function addEmptyList(arr, markup) {
